@@ -10,7 +10,6 @@ class Database {
             //create new PDO
             require_once __DIR__ . '/../../config/database.php';
             $config = getDatabaseConfig();
-
             self::$pdo = new \PDO(
                 $config["database"][$env]["url"],
                 $config["database"][$env]["username"],
@@ -27,7 +26,7 @@ class Database {
     public static function commitTransaction() {
         self::$pdo->commit();
     }
-    
+
     public static function rollbackTransaction() {
         self::$pdo->rollBack();
     }

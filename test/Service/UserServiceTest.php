@@ -1,4 +1,5 @@
 <?php
+namespace ProgrammerZamanNow\Belajar\PHP\MVC\Service;
 
 use PHPUnit\Framework\TestCase;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Config\Database;
