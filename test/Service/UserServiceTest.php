@@ -5,6 +5,7 @@ use PHPUnit\Framework\TestCase;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Config\Database;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Domain\User;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Exception\ValidationException;
+use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserLoginRequest;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserRegisterRequest;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\UserRepository;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Service\UserService;
@@ -26,7 +27,7 @@ class UserServiceTest extends TestCase {
     public function testRegisterSuccess() {
         $request = new UserRegisterRequest();
 
-        $request->id = "budi";
+        $request->id = "budi1";
         $request->name = "Budyono";
         $request->password = "12456";
 
@@ -52,18 +53,66 @@ class UserServiceTest extends TestCase {
 
     public function testRegisterDuplicate() {
         $user = new User();
-        $user->id = "budi";
+        $user->id = "budi2";
         $user->name = "Budiyono";
-        $user->password = "123456";
+        $user->password = "12456";
 
         $this->userRepository->save($user);
 
         $this->expectException(ValidationException::class);
         $req = new UserRegisterRequest();
-        $req->id = "budi";
+        $req->id = "budi2";
         $req->name = "Budiyono";
-        $req->password = "123456";
+        $req->password = "12456";
 
         $this->userService->register($req);
+    }
+
+    public function testLoginNotFound()
+    {
+        $this->expectException(ValidationException::class);
+        $request = new UserLoginRequest();
+
+        $request->id = "budi1";
+        $request->password = "124561";
+
+        $this->userService->login($request);
+    }
+
+    public function testLoginWrongPassword()
+    {
+        $this->expectException(ValidationException::class);
+        $user = new User();
+        $user->id = "budi2";
+        $user->name = "Budiyono";
+        $user->password = password_hash("12456", PASSWORD_BCRYPT);
+
+        $this->userRepository->save($user);
+
+        $request = new UserLoginRequest();
+
+        $request->id = "budi2";
+        $request->password = "12456a";
+
+        $this->userService->login($request);
+    }
+
+    public function testLoginSucess()
+    {
+       
+        $user = new User();
+        $user->id = "budi2";
+        $user->name = "Budiyono";
+        $user->password = password_hash("12456", PASSWORD_BCRYPT);
+
+        $this->userRepository->save($user);
+        $request = new UserLoginRequest();
+
+        $request->id = "budi2";
+        $request->password = "12456";
+
+        $response = $this->userService->login($request);
+        self::assertEquals($request->id, $response->user->id);
+        self::assertTrue(password_verify($request->password, $response->user->password));
     }
 }
