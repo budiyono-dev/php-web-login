@@ -8,11 +8,11 @@ use ProgrammerZamanNow\Belajar\PHP\MVC\Domain\User;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Exception\ValidationException;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserLoginRequest;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserLoginResponse;
+use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserProfileUpdateRequest;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserProfileUpdateResponse;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserRegisterRequest;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserRegisterResponse;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\UserRepository;
-use UserProfileUpdateRequest;
 
 class UserService {
     private UserRepository $userRepository;
@@ -95,7 +95,7 @@ class UserService {
             }
 
             $user->name = $request -> name;
-            $this->userRepository->save($user);
+            $this->userRepository->update($user);
             
             Database::commitTransaction();
             $response = new UserProfileUpdateResponse();
