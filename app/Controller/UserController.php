@@ -7,22 +7,27 @@ use ProgrammerZamanNow\Belajar\PHP\MVC\Config\Database;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Exception\ValidationException;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserLoginRequest;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserRegisterRequest;
+use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\SessionRepository;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\UserRepository;
+use ProgrammerZamanNow\Belajar\PHP\MVC\Service\SessionService;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Service\UserService;
 
 class UserController {
     private UserService $userService;
+    private SessionService $sessionService;
 
-    public function __construct()
-    {
+    public function __construct() {
         $connnection = Database::getConnection();
         $userRepository =  new UserRepository($connnection);
         $this->userService = new UserService($userRepository);
+
+        $sessionRepository = new SessionRepository($connnection);
+        $this->sessionService = new SessionService($sessionRepository, $userRepository);
     }
 
     public function register() {
-        View::render('User/register',[
-            'title'=>'Register New User'
+        View::render('User/register', [
+            'title' => 'Register New User'
         ]);
     }
 
@@ -32,39 +37,37 @@ class UserController {
         $request->name = $_POST['name'];
         $request->password = $_POST['password'];
 
-        
+
         try {
             $this->userService->register($request);
             View::redirect('/users/login');
         } catch (ValidationException $ex) {
-            View::render('User/register',[
-                'title'=> 'Register New User',
-                'error'=> $ex->getMessage()
+            View::render('User/register', [
+                'title' => 'Register New User',
+                'error' => $ex->getMessage()
             ]);
         }
-
     }
 
-    public function login()
-    {
-        View::render('User/login',[
-            'title'=>'login User',
+    public function login() {
+        View::render('User/login', [
+            'title' => 'login User',
 
         ]);
     }
 
-    public function postLogin()
-    {
+    public function postLogin() {
         $request = new UserLoginRequest();
         $request->id = $_POST['id'];
         $request->password = $_POST['password'];
         try {
-            $this->userService->login($request);
+            $response = $this->userService->login($request);
+            $this->sessionService->create($response->user->id);
             View::redirect('/');
         } catch (ValidationException $ex) {
-            View::render('User/login',[
-                'title'=>'login User',
-                'error'=> $ex->getMessage()
+            View::render('User/login', [
+                'title' => 'login User',
+                'error' => $ex->getMessage()
             ]);
         }
     }
