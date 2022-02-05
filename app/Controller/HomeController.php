@@ -20,7 +20,7 @@ class HomeController {
 
     function index(): void {
         $user = $this->sessionService->current();
-        error_log("user : ".$user->id);
+        // error_log("user : ".$user->id);
         if ($user == null) {
             View::render('Home/index', [
                 "title" => "PHP Login Management"
