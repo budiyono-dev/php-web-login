@@ -8,9 +8,11 @@ use ProgrammerZamanNow\Belajar\PHP\MVC\Domain\User;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Exception\ValidationException;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserLoginRequest;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserLoginResponse;
+use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserProfileUpdateResponse;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserRegisterRequest;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserRegisterResponse;
 use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\UserRepository;
+use UserProfileUpdateRequest;
 
 class UserService {
     private UserRepository $userRepository;
@@ -60,11 +62,11 @@ class UserService {
     public function login(UserLoginRequest $request): UserLoginResponse {
         $this->validateUserLoginRequest($request);
         $user = $this->userRepository->findById($request->id);
-        if($user == null){
+        if ($user == null) {
             throw new ValidationException("Username or password is wrong");
         }
 
-        if(password_verify($request->password, $user->password)){
+        if (password_verify($request->password, $user->password)) {
             $response = new UserLoginResponse();
             $response->user = $user;
             return $response;
@@ -79,6 +81,39 @@ class UserService {
             trim($request->id) == "" ||  trim($request->password) == ""
         ) {
             throw new ValidationException("id, password cannot blank");
+        }
+    }
+
+    public function updateProfile(UserProfileUpdateRequest $request): UserProfileUpdateResponse {
+        $this->validateUserProfileUpdateRequest($request);
+
+        try {
+            Database::begintransaction();
+            $user = $this->userRepository->findById($request->id);
+            if ($user == null) {
+                throw new ValidationException("User Not Found");
+            }
+
+            $user->name = $request -> name;
+            $this->userRepository->save($user);
+            
+            Database::commitTransaction();
+            $response = new UserProfileUpdateResponse();
+            $response->user = $user;
+
+            return $response;
+        } catch (\Exception $exe) {
+            Database::rollbackTransaction();
+            $exe->getMessage();
+        }
+    }
+
+    public function validateUserProfileUpdateRequest(UserProfileUpdateRequest $request) {
+        if (
+            $request->id == null || $request->name == null ||
+            trim($request->id) == "" || trim($request->name) == ""
+        ) {
+            throw new ValidationException("id, name cannot blank");
         }
     }
 }
