@@ -1,25 +1,26 @@
 {
-    "name": "programmer-zaman-now/php-login-management",
-    "description": "Kelas Belajar PHP Login Management dari Youtube Programmer Zaman Now",
-    "type": "project",
-    "authors": [{
-        "name": "Budiyono",
-        "email": "budiyono.dev@gmail.com"
-    }],
-    "require": {
-        "php": ">=7.4"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "9.5.8"
-    },
-    "autoload": {
-        "psr-4": {
-            "ProgrammerZamanNow\\Belajar\\PHP\\MVC\\": "app"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "ProgrammerZamanNow\\Belajar\\PHP\\MVC\\": "test"
-        }
-    }
+	"name" : "programmer-zaman-now/php-login-management",
+	"description" : "Kelas Belajar PHP Login Management dari Youtube Programmer Zaman Now",
+	"type" : "project",
+	"authors" : [{
+			"name" : "Budiyono",
+			"email" : "budiyono.dev@gmail.com"
+		}
+	],
+	"require" : {
+		"php" : ">=7.4"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "9.5.8"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"ProgrammerZamanNow\\Belajar\\PHP\\MVC\\" : "app"
+		}
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"ProgrammerZamanNow\\Belajar\\PHP\\MVC\\" : "test"
+		}
+	}
 }

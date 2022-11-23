@@ -1,5 +1,5 @@
 <?php
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Domain;
+namespace app\Domain;
 
 class Session
 {

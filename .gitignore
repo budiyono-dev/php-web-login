@@ -1,3 +1,6 @@
 vendor
 .idea
 .vscode
+.settings
+.project
+.buildpath

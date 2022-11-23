@@ -1,5 +1,5 @@
 <?php
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Model;
+namespace app\Model;
 
 class UserProfileUpdateRequest 
 {

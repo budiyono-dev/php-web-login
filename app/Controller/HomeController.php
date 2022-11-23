@@ -1,12 +1,12 @@
 <?php
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Controller;
+namespace app\Controller;
 
-use ProgrammerZamanNow\Belajar\PHP\MVC\App\View;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Config\Database;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\SessionRepository;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\UserRepository;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Service\SessionService;
+use app\App\View;
+use app\Config\Database;
+use app\Repository\SessionRepository;
+use app\Repository\UserRepository;
+use app\Service\SessionService;
 
 class HomeController {
     private SessionService $sessionService;

@@ -1,6 +1,6 @@
 <?php
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Domain;
+namespace app\Domain;
 
 class User{
     public string $id;

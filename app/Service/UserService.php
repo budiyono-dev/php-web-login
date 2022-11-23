@@ -1,18 +1,17 @@
 <?php
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Service;
+namespace app\Service;
 
-use phpDocumentor\Reflection\Types\This;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Config\Database;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Domain\User;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Exception\ValidationException;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserLoginRequest;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserLoginResponse;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserProfileUpdateRequest;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserProfileUpdateResponse;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserRegisterRequest;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserRegisterResponse;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\UserRepository;
+use app\Config\Database;
+use app\Domain\User;
+use app\Exception\ValidationException;
+use app\Model\UserLoginRequest;
+use app\Model\UserLoginResponse;
+use app\Model\UserProfileUpdateRequest;
+use app\Model\UserProfileUpdateResponse;
+use app\Model\UserRegisterRequest;
+use app\Model\UserRegisterResponse;
+use app\Repository\UserRepository;
 
 class UserService {
     private UserRepository $userRepository;

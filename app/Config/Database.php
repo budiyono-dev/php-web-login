@@ -1,6 +1,6 @@
 <?php
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Config;
+namespace app\Config;
 
 class Database {
     private static ?\PDO $pdo = null;

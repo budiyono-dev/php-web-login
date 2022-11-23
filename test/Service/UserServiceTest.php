@@ -1,16 +1,14 @@
 <?php
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Service;
+namespace test\Service;
 
 use PHPUnit\Framework\TestCase;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Config\Database;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Domain\User;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Exception\ValidationException;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserLoginRequest;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserRegisterRequest;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\UserRepository;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Service\UserService;
-
-use function PHPUnit\Framework\assertEquals;
+use app\Config\Database;
+use app\Domain\User;
+use app\Exception\ValidationException;
+use app\Model\UserLoginRequest;
+use app\Model\UserRegisterRequest;
+use app\Repository\UserRepository;
+use app\Service\UserService;
 
 class UserServiceTest extends TestCase {
     private UserService $userService;

@@ -1,8 +1,8 @@
 <?php
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Repository;
+namespace app\Repository;
 
-use ProgrammerZamanNow\Belajar\PHP\MVC\Domain\Session;
+use app\Domain\Session;
 
 class SessionRepository {
     private \PDO $connection;

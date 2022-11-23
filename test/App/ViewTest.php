@@ -1,7 +1,8 @@
 <?php
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\App;
+namespace test\App;
 use PHPUnit\Framework\TestCase;
+use app\App\View;
 
 class ViewTest extends TestCase {
 

@@ -1,17 +1,17 @@
 <?php
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Controller;
+namespace app\Controller;
 
-use ProgrammerZamanNow\Belajar\PHP\MVC\App\View;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Config\Database;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Exception\ValidationException;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserLoginRequest;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserProfileUpdateRequest;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Model\UserRegisterRequest;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\SessionRepository;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\UserRepository;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Service\SessionService;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Service\UserService;
+use app\App\View;
+use app\Config\Database;
+use app\Exception\ValidationException;
+use app\Model\UserLoginRequest;
+use app\Model\UserProfileUpdateRequest;
+use app\Model\UserRegisterRequest;
+use app\Repository\SessionRepository;
+use app\Repository\UserRepository;
+use app\Service\SessionService;
+use app\Service\UserService;
 
 class UserController {
     private UserService $userService;

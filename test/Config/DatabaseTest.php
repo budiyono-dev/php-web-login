@@ -1,7 +1,8 @@
 <?php
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Config;
+namespace test\Config;
 use PHPUnit\Framework\TestCase;
+use app\Config\Database;
 
 class DatabaseTest extends TestCase {
 

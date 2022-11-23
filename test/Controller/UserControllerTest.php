@@ -1,19 +1,19 @@
 <?php
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\App{
+namespace test\Controller{
     function header(string $value)
     {
         echo $value;
     }
 }
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Controller {
+namespace test\Controller {
 
     use PHPUnit\Framework\TestCase;
-    use ProgrammerZamanNow\Belajar\PHP\MVC\Config\Database;
-    use ProgrammerZamanNow\Belajar\PHP\MVC\Controller\UserController;
-    use ProgrammerZamanNow\Belajar\PHP\MVC\Domain\User;
-    use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\UserRepository;
+    use app\Config\Database;
+    use app\Controller\UserController;
+    use app\Domain\User;
+    use app\Repository\UserRepository;
 
     class UserControllerTest extends TestCase {
         private UserController $userController;

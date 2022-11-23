@@ -1,11 +1,11 @@
 <?php
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Service;
+namespace app\Service;
 
-use ProgrammerZamanNow\Belajar\PHP\MVC\Domain\Session;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Domain\User;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\SessionRepository;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Repository\UserRepository;
+use app\Domain\Session;
+use app\Domain\User;
+use app\Repository\SessionRepository;
+use app\Repository\UserRepository;
 
 class SessionService {
     public static string $COOKIE_NAME = "X-PZN-SESSION";

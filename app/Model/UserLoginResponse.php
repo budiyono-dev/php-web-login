@@ -1,8 +1,8 @@
 <?php
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Model;
+namespace app\Model;
 
-use ProgrammerZamanNow\Belajar\PHP\MVC\Domain\User;
+use app\Domain\User;
 
 class UserLoginResponse {
     public User $suer;

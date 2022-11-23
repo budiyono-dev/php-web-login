@@ -1,9 +1,8 @@
 <?php
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Repository;
+namespace app\Repository;
 
-use PhpParser\Node\Stmt\TryCatch;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Domain\User;
+use app\Domain\User;
 
 class UserRepository {
     private \PDO $connection;

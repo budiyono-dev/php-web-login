@@ -1,10 +1,11 @@
 <?php
 
-namespace ProgrammerZamanNow\Belajar\PHP\MVC\Repository;
+namespace test\Repository;
 
 use PHPUnit\Framework\TestCase;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Config\Database;
-use ProgrammerZamanNow\Belajar\PHP\MVC\Domain\User;
+use app\Config\Database;
+use app\Domain\User;
+use app\Repository\UserRepository;
 
 class UserRepositoryTest extends TestCase {
     private UserRepository $userRepository;
